@@ -48,21 +48,7 @@ $page = 'index';
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card my-5">
-                    <form class="card-body cardbody-color p-lg-5" method="post" action="functions/auth/AuthenticateLogin.php">
-                        <?php
-                        if (isset($_SESSION['invalid_auth'])) {
-                        ?>
-                            <div class="alert alert-danger" role="alert"><?php echo $_SESSION['invalid_auth']; ?></div>
-                        <?php
-                        }
-                        ?>
-                        <?php
-                        if (isset($_SESSION['request_failed'])) {
-                        ?>
-                            <div class="alert alert-danger" role="alert"><?php echo $_SESSION['request_failed']; ?></div>
-                        <?php
-                        }
-                        ?>
+                    <form class="card-body cardbody-color p-lg-5">
                         <div class="text-center">
                             <img src="resources/images/sys_logo.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile">
                         </div>
@@ -70,21 +56,21 @@ $page = 'index';
                             <h4 class="font-weight-bold text-weight text-center">BHIS</h4>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="Username" aria-describedby="emailHelp" placeholder="User Name" name="username" required>
+                            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="User Name" name="username" required>
                         </div>
                         <div class="mb-4">
                             <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
                             <div class="form-check mx-2 mt-2">
-                                <span onclick="showPassword();">
-                                    <input class="form-check-input" type="checkbox" value="" id="showPassword" unchecked onclick="showPassword();">
-                                    <label class="form-check-label" for="showPassword" onclick="showPassword();">
+                                <span>
+                                    <input class="form-check-input" type="checkbox" value="" id="show_password" unchecked>
+                                    <label class="form-check-label" for="show_password" id="show_password">
                                         Show Password
                                     </label>
                                 </span>
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-color px-5 mb-5 w-100" name="login_request">Login</button>
+                            <button type="submit" class="btn btn-color px-5 mb-5 w-100" name="login_request" id="btn_login">Login</button>
                         </div>
                     </form>
                 </div>
@@ -110,14 +96,58 @@ $page = 'index';
 
     <?php include('includes/scripts.php'); ?>
     <script>
-        function showPassword() {
-            var passwd = document.getElementById('password');
-            if (passwd.type === "password") {
-                passwd.type = "text";
-            } else {
-                passwd.type = "password";
-            }
-        }
+        $(document).ready(function() {
+            $('#show_password').click(function(e) {
+                // e.preventDefault();
+                var passwd = document.getElementById('password');
+                if (passwd.type === "password") {
+                    passwd.type = "text";
+                } else {
+                    passwd.type = "password";
+                }
+            });
+
+            $('button#btn_login').click(function(e) {
+                e.preventDefault();
+                var username = $('#username').val();
+                var password = $('#password').val();
+                if (username.trim() == "" || password.trim() == "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Empty Fields',
+                        text: 'Please enter a username and password.'
+                    });
+                } else {
+                    $.ajax({
+                        type: "post",
+                        url: "functions/auth/AuthenticateLogin.php",
+                        data: {
+                            username: username,
+                            password: password
+                        },
+                        dataType: "JSON",
+                        success: function(response) {
+                            // console.log(response);
+                            if (response == 'request_failed') {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Login Failed',
+                                    text: 'Something went wrong, failed to process request. Please try again.'
+                                });
+                            } else if (response == "false") {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Login Failed',
+                                    text: 'Incorrect username or password. Please try again.'
+                                });
+                            } else {
+                                location.href = 'bhis/dashboard.php';
+                            }
+                        }
+                    });
+                }
+            });
+        });
     </script>
 </body>
 
