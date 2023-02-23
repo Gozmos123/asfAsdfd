@@ -15,7 +15,7 @@ if (!(isset($_SESSION['auth']))) {
         $password = mysqli_real_escape_string($user->con, $_POST['password']);
 
         $result = $user->authenticateLogin($username, $password);
-        if (!$result == null) {
+        if (!($result == null)) {
             $_SESSION['auth'] = $result;
             header('location: ../../bhis/dashboard.php');
             exit();
