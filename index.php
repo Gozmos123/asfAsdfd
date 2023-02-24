@@ -115,7 +115,8 @@ $page = 'index';
                     Swal.fire({
                         icon: 'error',
                         title: 'Empty Fields',
-                        text: 'Please enter a username and password.'
+                        text: 'Please enter a username and password.',
+                        allowOutsideClick: false
                     });
                 } else {
                     $.ajax({
@@ -132,13 +133,15 @@ $page = 'index';
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Login Failed',
-                                    text: 'Something went wrong, failed to process request. Please try again.'
+                                    text: 'Something went wrong, failed to process request. Please try again.',
+                                    allowOutsideClick: false
                                 });
                             } else if (response == "false") {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Login Failed',
-                                    text: 'Incorrect username or password. Please try again.'
+                                    text: 'Incorrect username or password. Please try again.',
+                                    allowOutsideClick: false
                                 });
                             } else {
                                 location.href = 'bhis/dashboard.php';

@@ -6,6 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
 
 class Database
 {
+    // private $host = "sql301.epizy.com";
+    // private $user = "epiz_33636778";
+    // private $password = "RA3ZCqHoo1Zf";
+    // private $dbname = "epiz_33636778_bhis";
     private $host = "localhost";
     private $user = "bhis_user";
     private $password = "user_BHIS_2023";
