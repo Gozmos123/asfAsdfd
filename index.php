@@ -48,7 +48,7 @@ $page = 'index';
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card my-5">
-                    <form class="card-body cardbody-color p-lg-5">
+                    <form class="card-body cardbody-color p-lg-5 needs-validation" novalidate id="form_login">
                         <div class="text-center">
                             <img src="resources/images/sys_logo.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile">
                         </div>
@@ -56,10 +56,16 @@ $page = 'index';
                             <h4 class="font-weight-bold text-weight text-center">BHIS</h4>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="User Name" name="username" required>
+                            <input type="text" class="form-control" id="username" aria-describedby="username" placeholder="User Name" name="username" required>
+                            <div class="invalid-feedback">
+                                Username is required.
+                            </div>
                         </div>
                         <div class="mb-4">
                             <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                            <div class="invalid-feedback">
+                                Password is required.
+                            </div>
                             <div class="form-check mx-2 mt-2">
                                 <span>
                                     <input class="form-check-input" type="checkbox" value="" id="show_password" unchecked>
@@ -70,7 +76,7 @@ $page = 'index';
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-color px-5 mb-5 w-100" name="login_request" id="btn_login">Login</button>
+                            <button type="submit" class="btn btn-color px-5 mb-5 w-100" id="btn_login">Login</button>
                         </div>
                     </form>
                 </div>
@@ -108,17 +114,11 @@ $page = 'index';
             });
 
             $('button#btn_login').click(function(e) {
-                e.preventDefault();
                 var username = $('#username').val();
                 var password = $('#password').val();
-                if (username.trim() == "" || password.trim() == "") {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Empty Fields',
-                        text: 'Please enter a username and password.',
-                        allowOutsideClick: false
-                    });
-                } else {
+
+                if (!(username.trim() == "" || password.trim() == "")) {
+                    e.preventDefault();
                     $.ajax({
                         type: "post",
                         url: "functions/auth/AuthenticateLogin.php",
@@ -140,7 +140,7 @@ $page = 'index';
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Login Failed',
-                                    text: 'Incorrect username or password. Please try again.',
+                                    text: 'Incorrect username or password, please try again.',
                                     allowOutsideClick: false
                                 });
                             } else {
