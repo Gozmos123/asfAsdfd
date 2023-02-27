@@ -21,6 +21,7 @@ if (!(isset($_SESSION['auth']))) {
 
     if (!($result == null)) {
         $_SESSION['auth'] = $result;
+        $user->updateLoginDate($username, 'System Login');
         echo json_encode("true");
         exit();
     } else {

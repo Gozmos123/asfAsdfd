@@ -197,16 +197,16 @@ $page = "My Profile";
                                                     <div class="row">
                                                         <div class="col-sm-10">
                                                             <label for="password" class="form-label">New Password</label>
-                                                            <input type="password" class="form-control" id="password" value="" required>
+                                                            <input type="password" class="form-control" id="password" value="" required minlength="8">
                                                             <div class="invalid-feedback">
-                                                                Enter your new password.
+                                                                Enter your new password. (Minimum of 8 characters.)
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row mt-3">
                                                         <div class="col-sm-10">
                                                             <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                                            <input type="password" class="form-control" id="password_confirmation" value="" required>
+                                                            <input type="password" class="form-control" id="password_confirmation" value="" required minlength="8">
                                                             <div class="invalid-feedback">
                                                                 Please confirm your new password.
                                                             </div>
@@ -334,7 +334,7 @@ $page = "My Profile";
                 var password = $('#password').val();
                 var password_confirmation = $('#password_confirmation').val();
 
-                if (!(current_password.trim() == "" || password.trim() == "" || password_confirmation.trim() == "")) {
+                if (!(current_password.trim() == "" || password.trim() == "" || password_confirmation.trim() == "" || password.length < 8 || password_confirmation.length < 8)) {
                     e.preventDefault();
                     $.ajax({
                         type: "post",
@@ -393,9 +393,10 @@ $page = "My Profile";
                                                         toast.addEventListener('mouseleave', Swal.resumeTimer)
                                                     }
                                                 }).then((result) => {
-                                                    $('#current_password').val('');
-                                                    $('#password').val('');
-                                                    $('#password_confirmation').val('');
+                                                    // $('#current_password').val('');
+                                                    // $('#password').val('');
+                                                    // $('#password_confirmation').val('');
+                                                    location.reload();
                                                 });
                                             } else {
                                                 Swal.fire({
