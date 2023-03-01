@@ -97,6 +97,8 @@ $page = "mothers";
                                     <tbody>
                                         <?php
                                         require_once('../../model/residents/Mother.php');
+                                        require_once('../../model/Secure.php');
+
                                         $mother = new Mother;
 
                                         $mothers = $mother->getMothersAll();
@@ -109,10 +111,26 @@ $page = "mothers";
                                                     <td><?php echo $mother['first_name'] . ' ' . $mother['middle_name'] . ' ' . $mother['last_name']; ?></td>
                                                     <td><?php echo $mother['age']; ?></td>
                                                     <td><?php echo $mother['sex']; ?></td>
-                                                    <td><?php echo $mother['civil_status']; ?></td>
+                                                    <?php
+                                                    if ($mother['civil_status'] == "Other") {
+                                                        $civil_status = $mother['other_status'];
+                                                    } else {
+                                                        $civil_status = $mother['civil_status'];
+                                                    }
+                                                    ?>
+                                                    <td><?php echo $civil_status; ?></td>
                                                     <td><?php echo $mother['purok_name']; ?></td>
                                                     <td>
                                                         <button class="btn btn-primary" id="btn_edit_mother" data-id="<?php echo $mother['id']; ?>" data-toggle="modal" data-target="#modal_edit_mother"><i class="fa fa-edit"></i> Edit</button>
+                                                        <button class="btn btn-primary" id="btn_add_children" data-id="<?php echo $mother['id']; ?>" data-toggle="modal" data-target="#modal_add_children"><i class="fa fa-plus-circle"></i> Add Children</button>
+                                                        <?php
+                                                        $id = Secure::encrypt($mother['id']);
+                                                        // die($id);
+                                                        ?>
+                                                        <form action="../childrens/" method="GET">
+                                                            <input type="hidden" name="q" value="<?php echo $id; ?>">
+                                                            <button class="btn btn-primary" id="btn_view_childrens"><i class="fa fa-eye"></i> Childrens</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                         <?php
@@ -141,6 +159,7 @@ $page = "mothers";
     <?php
     include('modals/modal_add_mother.php');
     include('modals/modal_edit_mother.php');
+    include('modals/modal_add_children.php');
     ?>
 
     <!-- scripts -->

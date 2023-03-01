@@ -29,7 +29,7 @@ $all_purok = $puroks->getPurokAll();
                             <label for="first_name" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="first_name" required value="" name="first_name">
                             <div class="invalid-feedback">
-                                Please enter your first name.
+                                Please enter first name.
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -40,12 +40,12 @@ $all_purok = $puroks->getPurokAll();
                             <label for="last_name" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="last_name" required value="" name="last_name">
                             <div class="invalid-feedback">
-                                Please enter your last name.
+                                Please enter last name.
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="prefix" class="form-label">Prefix</label>
-                            <input type="text" class="form-control" id="prefix" value="" placeholder="e.g. Jr." name="prefix">
+                            <input type="text" class="form-control" id="prefix" value="" placeholder="e.g. Jr." name="prefix" maxlength="8">
                         </div>
                         <div class="col-md-6">
                             <label for="sex" class="form-label">Sex</label>
@@ -65,7 +65,7 @@ $all_purok = $puroks->getPurokAll();
                             <label for="birthplace" class="form-label">Place of Birth</label>
                             <input type="text" class="form-control" id="birthplace" required value="" name="birthplace">
                             <div class="invalid-feedback">
-                                Please enter your place of birth.
+                                Please enter place of birth.
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -84,7 +84,7 @@ $all_purok = $puroks->getPurokAll();
                             <label for="other_status" class="form-label">Other Status</label>
                             <input type="text" class="form-control" id="other_status" value="" name="other_status">
                             <div class="invalid-feedback">
-                                Please enter your civil status.
+                                Please enter civil status.
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -120,7 +120,7 @@ $all_purok = $puroks->getPurokAll();
                         </div>
                         <div class="col-md-6">
                             <label for="contact_no" class="form-label">Contact Number</label>
-                            <input type="text" class="form-control" id="contact_no" pattern="[0-9]{11}" value="" name="contact_no">
+                            <input type="text" class="form-control" id="contact_no" pattern="[0-9]{11}" value="" name="contact_no" maxlength="11">
                             <div class="invalid-feedback">
                                 Please enter a valid phone number, ex: 09123456789.
                             </div>

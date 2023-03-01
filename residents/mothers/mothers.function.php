@@ -4,6 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
     exit();
 }
 require __DIR__ . '/../../model/residents/Mother.php';
+require __DIR__ . '/../../model/residents/Children.php';
 
 if (isset($_SESSION['auth'])) {
     // add new mother
@@ -116,6 +117,63 @@ if (isset($_SESSION['auth'])) {
 
         if ($result) {
             $_SESSION['updated'] =  'Success';
+            header("location: ../mothers/");
+            exit();
+        } else {
+            $_SESSION['request_failed'] =  'Failed';
+            header("location: ../mothers/");
+            exit();
+        }
+    }
+
+    // add new children
+    if (isset($_POST['request_add_children'])) {
+        $children = new Children;
+
+        if ($_POST['sex'] == "Male") {
+            $children->photo = 'uploads/undraw_profile_2.svg';
+        } else {
+            $children->photo = 'uploads/undraw_profile_1.svg';
+        }
+        $children->first_name = mysqli_real_escape_string($children->con, $_POST['first_name']);
+        $children->middle_name = mysqli_real_escape_string($children->con, $_POST['middle_name']);
+        $children->last_name = mysqli_real_escape_string($children->con, $_POST['last_name']);
+        $children->prefix = mysqli_real_escape_string($children->con, $_POST['prefix']);
+        $children->birthdate = mysqli_real_escape_string($children->con, $_POST['birthdate']);
+
+        $dob = $children->birthdate;
+        $today = date('Y-m-d');
+        $age = date_diff(date_create($dob), date_create($today));
+        $children->age = $age->format('%y') . ' years old';
+        if ($children->age < 1) {
+            $children->age = $age->m . ' month/s';
+        }
+
+        $children->sex = mysqli_real_escape_string($children->con, $_POST['sex']);
+        $children->civil_status = mysqli_real_escape_string($children->con, $_POST['civil_status']);
+        if ($children->civil_status == "Other") {
+            $children->other_status = mysqli_real_escape_string($children->con, $_POST['other_status']);
+        } else {
+            $children->other_status = "";
+        }
+        $children->birthplace = mysqli_real_escape_string($children->con, $_POST['birthplace']);
+        $children->religion = mysqli_real_escape_string($children->con, $_POST['religion']);
+        $children->email = mysqli_real_escape_string($children->con, $_POST['email']);
+        $children->contact_no = mysqli_real_escape_string($children->con, $_POST['contact_no']);
+        $children->purok_name = mysqli_real_escape_string($children->con, $_POST['purok_name']);
+        $children->mother_id = mysqli_real_escape_string($children->con, $_POST['mother_id']);
+        $children->last_user = mysqli_real_escape_string($children->con, $_SESSION['auth'][0]['username']);
+
+        $result = $children->storeChildren();
+
+        if (is_array($result) && array_key_exists('request_failed', (array)$result)) {
+            $_SESSION['request_failed'] =  'Request Failed';
+            header("location: ../mothers/");
+            exit();
+        }
+
+        if ($result) {
+            $_SESSION['saved_children'] =  'Success';
             header("location: ../mothers/");
             exit();
         } else {

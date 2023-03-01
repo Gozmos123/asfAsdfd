@@ -48,6 +48,31 @@
   <?php
     }
     ?>
+  <!-- children added -->
+  <?php
+    if (isset($_SESSION['saved_children'])) {
+        unset($_SESSION['saved_children']);
+    ?>
+      <script>
+          Swal.fire({
+              // toast: true,
+              // position: 'top',
+              icon: 'success',
+              title: 'Children Successfully Added.',
+              confirmButtonText: 'Ok',
+              // showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                  // Swal.showLoading()
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+          });
+      </script>
+  <?php
+    }
+    ?>
   <!-- request failed -->
   <?php
     if (isset($_SESSION['request_failed'])) {

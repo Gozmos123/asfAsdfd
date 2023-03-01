@@ -1,11 +1,17 @@
 const current_date = new Date().toLocaleDateString('fr-ca');
 birthdate.max = current_date;
+edit_birthdate.max = current_date;
+children_birthdate.max = current_date;
 
 function civil_status_change() {
-    if (document.getElementById('civil_status').value === "Other") {
+    if (document.getElementById('civil_status').value === "Other" || document.getElementById('edit_civil_status').value === "Other" || document.getElementById('children_civil_status').value === "Other") {
         other_status.required = true;
+        edit_other_status.required = true;
+        children_other_status.required = true;
     } else {
         other_status.required = false;
+        edit_other_status.required = false;
+        children_other_status.required = false;
     }
 }
 
@@ -43,7 +49,7 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (response) {
-                console.log(response[0]['id']);
+                // console.log(response[0]['id']);
                 if (response == "false" || response == "request_failed") {
                     Swal.fire({
                         icon: 'error',
@@ -65,6 +71,34 @@ $(document).ready(function () {
                     $('#edit_purok_name').val(response[0]['purok_name']);
                     $('#edit_email').val(response[0]['email']);
                     $('#edit_contact_no').val(response[0]['contact_no']);
+                }
+            }
+        });
+    });
+
+    $('button#btn_add_children').click(function (e) {
+        var id = $(this).data('id');
+
+        $.ajax({
+            type: "post",
+            data: {
+                request_mother_details: 1,
+                id: id
+            },
+            dataType: "JSON",
+            success: function (response) {
+                if (response == "false" || response == "request_failed") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Failed To Load Details',
+                        text: 'Something went wrong, failed to load details. Please try again.',
+                        allowOutsideClick: false
+                    });
+                } else {
+                    $('#mother_id').val(response[0]['id']);
+                    $('#children_last_name').val(response[0]['last_name']);
+                    $('#children_religion').val(response[0]['religion']);
+                    $('#children_purok_name').val(response[0]['purok_name']);
                 }
             }
         });
