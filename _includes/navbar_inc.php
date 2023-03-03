@@ -29,10 +29,16 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
-                <a class="dropdown-item" href="<?php echo $link_options; ?>">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Options
-                </a>
+                <?php
+                if ($_SESSION['auth'][0]['user_type'] == "administrator") {
+                ?>
+                    <a class="dropdown-item" href="<?php echo $link_options; ?>">
+                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Options
+                    </a>
+                <?php
+                }
+                ?>
                 <a class="dropdown-item" href="<?php echo $link_activity_log; ?>">
                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                     Activity Log
