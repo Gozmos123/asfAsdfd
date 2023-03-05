@@ -80,9 +80,16 @@ $page = "mothers";
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-12 mb-4">
-                                        <button class="btn btn-primary" id="btn_add_mother" data-toggle="modal" data-target="#modal_add_mother"><i class="fa fa-plus-circle"></i> Add New Mother</button>
-                                    </div>
+                                    <?php
+                                    if (!($_SESSION['auth'][0]['user_type'] == "user")) {
+                                    ?>
+                                        <div class="col-md-12 mb-4">
+                                            <button class="btn btn-primary" id="btn_add_mother" data-toggle="modal" data-target="#modal_add_mother"><i class="fa fa-plus-circle"></i> Add New Mother</button>
+                                        </div>
+
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                                 <table class="table table-responsive-sm" id="table_mothers">
                                     <thead>
@@ -123,8 +130,15 @@ $page = "mothers";
                                                     <td><?php echo $civil_status; ?></td>
                                                     <td><?php echo $mother['purok_name']; ?></td>
                                                     <td>
-                                                        <button class="btn btn-primary" id="btn_edit_mother" data-id="<?php echo $mother['id']; ?>" data-toggle="modal" data-target="#modal_edit_mother"><i class="fa fa-edit"></i> Edit</button>
-                                                        <button class="btn btn-primary" id="btn_add_children" data-id="<?php echo $mother['id']; ?>" data-toggle="modal" data-target="#modal_add_children"><i class="fa fa-plus-circle"></i> Add Children</button>
+                                                        <?php
+                                                        if (!($_SESSION['auth'][0]['user_type'] == "user")) {
+                                                        ?>
+
+                                                            <button class="btn btn-primary" id="btn_edit_mother" data-id="<?php echo $mother['id']; ?>" data-toggle="modal" data-target="#modal_edit_mother"><i class="fa fa-edit"></i> Edit</button>
+                                                            <button class="btn btn-primary" id="btn_add_children" data-id="<?php echo $mother['id']; ?>" data-toggle="modal" data-target="#modal_add_children"><i class="fa fa-plus-circle"></i> Add Children</button>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                         <?php
                                                         $id = Secure::encrypt($mother['id']);
                                                         // die($id);

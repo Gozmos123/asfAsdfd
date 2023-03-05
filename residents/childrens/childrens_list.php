@@ -66,7 +66,13 @@
                                 <a href="../childrens/?view=<?php echo $child_id; ?>&monitoring=all">
                                     <button class="btn btn-primary" id="btn_view_children"><i class="fa fa-eye"></i> View</button>
                                 </a>
-                                <button class="btn btn-primary" id="btn_edit_children" data-id="<?php echo $children['cID']; ?>" data-toggle="modal" data-target="#modal_edit_children"><i class="fa fa-edit"></i> Edit</button>
+                                <?php
+                                if (!($_SESSION['auth'][0]['user_type'] == "user")) {
+                                ?>
+                                    <button class="btn btn-primary" id="btn_edit_children" data-id="<?php echo $children['cID']; ?>" data-toggle="modal" data-target="#modal_edit_children"><i class="fa fa-edit"></i> Edit</button>
+                                <?php
+                                }
+                                ?>
                             </td>
                         </tr>
                 <?php

@@ -94,12 +94,16 @@ $page = "dewormings";
                     <div class="row">
                         <?php
                         if (isset($_REQUEST['add'])) {
-                            require_once('../../model/Secure.php');
+                            if (!($_SESSION['auth'][0]['user_type'] == "user")) {
+                                require_once('../../model/Secure.php');
 
-                            $secure_uri = Secure::decrypt($_REQUEST['add']);
+                                $secure_uri = Secure::decrypt($_REQUEST['add']);
 
-                            if ($secure_uri == "dewormings") {
-                                include('dewormings_add_new.php');
+                                if ($secure_uri == "dewormings") {
+                                    include('dewormings_add_new.php');
+                                } else {
+                                    include('dewormings_table.php');
+                                }
                             } else {
                                 include('dewormings_table.php');
                             }

@@ -4,9 +4,16 @@
             <div class="col-md-9">
                 <h4 class="card-title">Immunizations</h4>
             </div>
-            <div class="col-md-3">
-                <button class="btn btn-primary" id="btnAddImmunizations" data-toggle="modal" data-target="#modal_immunization_add"><i class="fa fa-plus-circle"></i> Add New</button>
-            </div>
+            <?php
+            if (!($_SESSION['auth'][0]['user_type'] == "user")) {
+            ?>
+
+                <div class="col-md-3">
+                    <button class="btn btn-primary" id="btnAddImmunizations" data-toggle="modal" data-target="#modal_immunization_add"><i class="fa fa-plus-circle"></i> Add New</button>
+                </div>
+            <?php
+            }
+            ?>
         </div>
         <div class="row mt-3">
             <table class="table table-responsive-sm" id="table_immunizations">

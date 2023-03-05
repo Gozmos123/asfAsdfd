@@ -61,10 +61,10 @@ $page = "immunizations";
         $link_users = '../../users/';
         $link_mothers = '../../residents/mothers/';
         $link_childrens = '../../residents/childrens/';
-        $link_vitamins = '../vitamins/';
-        $link_deworming = '../deworming/';
-        $link_weights = '../../monitoring/weights/';
-        $link_immunizations = '../../monitoring/immunizations/';
+        $link_vitamins = '../../distributions/vitamins/';
+        $link_deworming = '../../distributions/deworming/';
+        $link_weights = '../weights/';
+        $link_immunizations = '../immunizations/';
         $link_logout = '../../logout/index.php';
 
         // img logo
@@ -94,12 +94,16 @@ $page = "immunizations";
                     <div class="row">
                         <?php
                         if (isset($_REQUEST['add'])) {
-                            require_once('../../model/Secure.php');
+                            if (!($_SESSION['auth'][0]['user_type'] == "user")) {
+                                require_once('../../model/Secure.php');
 
-                            $secure_uri = Secure::decrypt($_REQUEST['add']);
+                                $secure_uri = Secure::decrypt($_REQUEST['add']);
 
-                            if ($secure_uri == "immunizations") {
-                                include('immunizations_add_new.php');
+                                if ($secure_uri == "immunizations") {
+                                    include('immunizations_add_new.php');
+                                } else {
+                                    include('immunizations_table.php');
+                                }
                             } else {
                                 include('immunizations_table.php');
                             }

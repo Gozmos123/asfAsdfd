@@ -13,8 +13,14 @@
                             <h4 class="my-3" id="name"><?php echo $children[0]['first_name'] . ' ' . $children[0]['middle_name'] . ' ' . $children[0]['last_name'] . ' ' . $children[0]['prefix']; ?></h4>
                             <div class="d-flex justify-content-center mb-2 mt-2">
                                 <!-- edit profile -->
-                                <input type="hidden" name="m_id" id="m_id" value="<?php echo $children[0]['mother_id']; ?>">
-                                <button class="btn btn-primary" id="btn_edit_children" data-id="<?php echo $children[0]['id']; ?>" data-toggle="modal" data-target="#modal_edit_children"><i class="fa fa-edit"></i> Edit Children</button>
+                                <?php
+                                if (!($_SESSION['auth'][0]['user_type'] == "user")) {
+                                ?>
+                                    <input type="hidden" name="m_id" id="m_id" value="<?php echo $children[0]['mother_id']; ?>">
+                                    <button class="btn btn-primary" id="btn_edit_children" data-id="<?php echo $children[0]['id']; ?>" data-toggle="modal" data-target="#modal_edit_children"><i class="fa fa-edit"></i> Edit Children</button>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <hr>

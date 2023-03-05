@@ -7,9 +7,15 @@
                 $secure_uri = Secure::encrypt('immunizations');
                 ?>
 
-                <a href="../immunizations/?add=<?php echo $secure_uri; ?>">
-                    <button class="btn btn-primary" id="btn_add_new"><i class="fa fa-plus-circle"></i> Add New</button>
-                </a>
+                <?php
+                if (!($_SESSION['auth'][0]['user_type'] == "user")) {
+                ?>
+                    <a href="../immunizations/?add=<?php echo $secure_uri; ?>">
+                        <button class="btn btn-primary" id="btn_add_new"><i class="fa fa-plus-circle"></i> Add New</button>
+                    </a>
+                <?php
+                }
+                ?>
                 <h4 class="card-title mt-2">Childrens Immunizations</h4>
             </div>
         </div>
