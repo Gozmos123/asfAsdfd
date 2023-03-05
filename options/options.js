@@ -90,7 +90,7 @@ $(document).ready(function () {
         }
     });
 
-    $('button#btn_edit_status').click(function (e) {
+    $(document).on('click', '#btn_edit_status', function () {
         // e.preventDefault();
         var id = $(this).data('id');
 
@@ -249,7 +249,7 @@ $(document).ready(function () {
         }
     });
 
-    $('button#btn_edit_immune').click(function (e) {
+    $(document).on('click', '#btn_edit_immune', function () {
         // e.preventDefault();
         var id = $(this).data('id');
 
@@ -408,7 +408,7 @@ $(document).ready(function () {
         }
     });
 
-    $('button#btn_edit_religion').click(function (e) {
+    $(document).on('click', '#btn_edit_religion', function () {
         // e.preventDefault();
         var id = $(this).data('id');
 
@@ -567,7 +567,7 @@ $(document).ready(function () {
         }
     });
 
-    $('button#btn_edit_purok').click(function (e) {
+    $(document).on('click', '#btn_edit_purok', function () {
         // e.preventDefault();
         var id = $(this).data('id');
 

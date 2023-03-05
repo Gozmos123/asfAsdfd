@@ -106,7 +106,7 @@ $page = "Users";
             <!-- End of Main Content -->
 
             <!-- Footer -->
-
+            <?php include('../_includes/footer_inc.php'); ?>
         </div>
         <!-- End of Content Wrapper -->
 

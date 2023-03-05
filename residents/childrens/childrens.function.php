@@ -102,7 +102,7 @@ if (isset($_SESSION['auth'])) {
                 header("location: ../childrens/?q=" . Secure::encrypt($children->mother_id));
                 exit();
             } elseif ($request == "child_profile") {
-                header("location: ../childrens/?view=" . Secure::encrypt($id));
+                header("location: ../childrens/?view=" . Secure::encrypt($id) . '&monitoring=all');
                 exit();
             } else {
                 header("location: ../childrens/");
@@ -116,7 +116,7 @@ if (isset($_SESSION['auth'])) {
                 header("location: ../childrens/?q=" . Secure::encrypt($children->mother_id));
                 exit();
             } elseif ($request == "child_profile") {
-                header("location: ../childrens/?view=" . Secure::encrypt($id));
+                header("location: ../childrens/?view=" . Secure::encrypt($id) . '&monitoring=all');
                 exit();
             } else {
                 header("location: ../childrens/");
@@ -128,7 +128,7 @@ if (isset($_SESSION['auth'])) {
                 header("location: ../childrens/?q=" . Secure::encrypt($children->mother_id));
                 exit();
             } elseif ($request == "child_profile") {
-                header("location: ../childrens/?view=" . Secure::encrypt($id));
+                header("location: ../childrens/?view=" . Secure::encrypt($id) . '&monitoring=all');
                 exit();
             } else {
                 header("location: ../childrens/");

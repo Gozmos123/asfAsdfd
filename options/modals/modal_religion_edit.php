@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalEditReligion"><strong>Edit Religion</strong></h5>
             </div>
-            <form action="javascript:void();" method="post">
+            <form action="javascript:void(0);" method="post">
                 <input type="hidden" name="religion_id" id="religion_id" required>
                 <div class="modal-body">
                     <div class="row g-3">

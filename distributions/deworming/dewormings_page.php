@@ -1,9 +1,9 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
-    header('location: ../childrens/');
+    header('location: ../deworming/');
     exit();
 }
-$page = "Childrens";
+$page = "dewormings";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +27,22 @@ $page = "Childrens";
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
     <!-- dataTable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
+    <!-- <link href="https://cdn.datatables.net/v/bs5/dt-1.13.3/datatables.min.css" /> -->
+    <style>
+        .dataTables_filter {
+            float: left !important;
+        }
+
+        .dataTables_length {
+            float: right !important;
+        }
+
+        .error {
+            font-size: 1em;
+            color: #F00;
+            /* background-color: #FFF; */
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -43,10 +59,10 @@ $page = "Childrens";
         // sidebar
         $link_dashboard = '../../dashboard/';
         $link_users = '../../users/';
-        $link_mothers = '../mothers/';
-        $link_childrens = '../childrens/';
-        $link_vitamins = '../../distributions/vitamins/';
-        $link_deworming = '../../distributions/deworming/';
+        $link_mothers = '../../residents/mothers/';
+        $link_childrens = '../../residents/childrens/';
+        $link_vitamins = '../vitamins/';
+        $link_deworming = '../deworming/';
         $link_weights = '../../monitoring/weights/';
         $link_immunizations = '../../monitoring/immunizations/';
         $link_logout = '../../logout/index.php';
@@ -77,28 +93,18 @@ $page = "Childrens";
                     <!-- Content Row -->
                     <div class="row">
                         <?php
-                        if (isset($_REQUEST['view'])) {
+                        if (isset($_REQUEST['add'])) {
                             require_once('../../model/Secure.php');
-                            require_once('../../model/residents/Children.php');
-                            require_once('../../model/residents/Mother.php');
 
-                            $child_id = Secure::decrypt($_REQUEST['view']);
+                            $secure_uri = Secure::decrypt($_REQUEST['add']);
 
-                            $child = new Children;
-                            $mother = new Mother;
-
-                            $children = $child->getChildren_ByID($child_id);
-
-                            if ($children) {
-                                $requested_specific = 'child_profile';
-
-                                $mother = $mother->getMother_ByID($children[0]['mother_id']);
-                                include('childrens_profile.php');
+                            if ($secure_uri == "dewormings") {
+                                include('dewormings_add_new.php');
                             } else {
-                                include('childrens_list.php');
+                                include('dewormings_table.php');
                             }
                         } else {
-                            include('childrens_list.php');
+                            include('dewormings_table.php');
                         }
                         ?>
                     </div>
@@ -116,9 +122,7 @@ $page = "Childrens";
     <!-- End of Page Wrapper -->
 
     <!-- modal -->
-    <?php
-    include('modals/modal_edit_children.php');
-    ?>
+
 
     <!-- scripts -->
     <script src="../../resources/js/script.js"></script>
@@ -139,10 +143,12 @@ $page = "Childrens";
     <script src="../../resources/sb-admin/js/sb-admin-2.min.js"></script>
     <!-- dataTable -->
     <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.js"></script>
+    <!-- jquery validation -->
+    <script src="../../resources/js/jquery.validate.min.js"></script>
 
-    <?php include('alerts.php'); ?>
+    <!-- alert -->
 
-    <script src="childrens.js"></script>
+    <script src="dewormings.js"></script>
 </body>
 
 </html>

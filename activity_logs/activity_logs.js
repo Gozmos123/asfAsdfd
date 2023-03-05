@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
-    $('button#btn_view_log').click(function (e) {
-        // e.preventDefault();
+    $('#table_activity_logs').DataTable();
+
+    $(document).on('click', '#btn_view_log', function () {
         var log_id = $(this).data('id');
 
         $.ajax({

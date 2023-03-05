@@ -121,11 +121,36 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="card mb-4">
-                    <div class="card-body text-center">
-
-                    </div>
-                </div>
+                <?php
+                if (isset($_REQUEST['monitoring'])) {
+                    if ($_REQUEST['monitoring'] == "all") {
+                        // vitamins
+                        include('includes/vitamins_inc.php');
+                        // deowrorming
+                        include('includes/deworming_inc.php');
+                        // weight
+                        include('includes/weights_inc.php');
+                        // immunization
+                        include('includes/immunization_inc.php');
+                    }
+                    if ($_REQUEST['monitoring'] == "vitamins") {
+                        // vitamins
+                        include('includes/vitamins_inc.php');
+                    }
+                    if ($_REQUEST['monitoring'] == "deworming") {
+                        // vitamins
+                        include('includes/deworming_inc.php');
+                    }
+                    if ($_REQUEST['monitoring'] == "weights") {
+                        // vitamins
+                        include('includes/weights_inc.php');
+                    }
+                    if ($_REQUEST['monitoring'] == "immunization") {
+                        // vitamins
+                        include('includes/immunization_inc.php');
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>

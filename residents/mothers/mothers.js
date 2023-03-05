@@ -18,6 +18,8 @@ function civil_status_change() {
 $(document).ready(function () {
     civil_status_change();
 
+    $('#table_mothers').DataTable();
+
     $('button#btn_close_modal').click(function (e) {
         e.preventDefault();
         Swal.fire({
@@ -37,8 +39,7 @@ $(document).ready(function () {
         });
     });
 
-
-    $('button#btn_edit_mother').click(function (e) {
+    $(document).on('click', '#btn_edit_mother', function () {
         var id = $(this).data('id');
 
         $.ajax({
@@ -76,7 +77,7 @@ $(document).ready(function () {
         });
     });
 
-    $('button#btn_add_children').click(function (e) {
+    $(document).on('click', '#btn_add_children', function () {
         var id = $(this).data('id');
 
         $.ajax({

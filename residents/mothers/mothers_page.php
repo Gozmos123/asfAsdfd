@@ -25,6 +25,8 @@ $page = "mothers";
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- boxicon -->
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+    <!-- dataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
 </head>
 
 <body id="page-top">
@@ -78,11 +80,11 @@ $page = "mothers";
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mb-4">
                                         <button class="btn btn-primary" id="btn_add_mother" data-toggle="modal" data-target="#modal_add_mother"><i class="fa fa-plus-circle"></i> Add New Mother</button>
                                     </div>
                                 </div>
-                                <table class="table table-responsive-sm mt-4">
+                                <table class="table table-responsive-sm" id="table_mothers">
                                     <thead>
                                         <tr>
                                             <th scope="col">Photo</th>
@@ -127,10 +129,9 @@ $page = "mothers";
                                                         $id = Secure::encrypt($mother['id']);
                                                         // die($id);
                                                         ?>
-                                                        <form action="../childrens/" method="GET">
-                                                            <input type="hidden" name="q" value="<?php echo $id; ?>">
+                                                        <a href="../childrens/?q=<?php echo $id; ?>">
                                                             <button class="btn btn-primary" id="btn_view_childrens"><i class="fa fa-eye"></i> Childrens</button>
-                                                        </form>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                         <?php
@@ -148,7 +149,7 @@ $page = "mothers";
             <!-- End of Main Content -->
 
             <!-- Footer -->
-
+            <?php include('../../_includes/footer_inc.php'); ?>
         </div>
         <!-- End of Content Wrapper -->
 
@@ -179,6 +180,8 @@ $page = "mothers";
     <script src="../../resources/sb-admin/jquery-easing/jquery.easing.min.js"></script>
     <!-- sb-admin script -->
     <script src="../../resources/sb-admin/js/sb-admin-2.min.js"></script>
+    <!-- dataTable -->
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.js"></script>
 
     <?php include('alerts.php'); ?>
 

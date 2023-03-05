@@ -34,7 +34,7 @@ class ActivityLog extends Database
                 $result = null;
             }
         } else {
-            $result = ['request_error' => 'Failed to process request.'];
+            $result = ['request_failed' => 'Failed to process request.'];
         }
         $stmt->close();
         return $result;
@@ -57,7 +57,7 @@ class ActivityLog extends Database
                 $result = null;
             }
         } else {
-            $result = ['request_error' => 'Failed to process request.'];
+            $result = ['request_failed' => 'Failed to process request.'];
         }
         $stmt->close();
         return $result;

@@ -25,6 +25,8 @@ $page = "Activity Logs";
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- boxicon -->
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+    <!-- dataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
 </head>
 
 <body id="page-top">
@@ -54,7 +56,7 @@ $page = "Activity Logs";
 
                     <!-- Content Row -->
                     <div class="row">
-                        <table class="table table-responsive-sm">
+                        <table class="table table-responsive-sm" id="table_activity_logs">
                             <thead>
                                 <tr>
                                     <th scope="col">Username</th>
@@ -96,6 +98,7 @@ $page = "Activity Logs";
             <!-- End of Main Content -->
 
             <!-- Footer -->
+            <?php include('../_includes/footer_inc.php'); ?>
 
         </div>
         <!-- End of Content Wrapper -->
@@ -123,6 +126,8 @@ $page = "Activity Logs";
     <script src="../resources/sb-admin/jquery-easing/jquery.easing.min.js"></script>
     <!-- sb-admin script -->
     <script src="../resources/sb-admin/js/sb-admin-2.min.js"></script>
+    <!-- dataTable -->
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.js"></script>
 
     <script src="activity_logs.js"></script>
 </body>

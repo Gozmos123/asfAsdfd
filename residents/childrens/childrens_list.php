@@ -34,7 +34,7 @@
                 ?>
             </h4>
         </div>
-        <table class="table table-responsive-sm mt-1">
+        <table class="table table-responsive-sm" id="table_childrens">
             <thead>
                 <tr>
                     <th scope="col">Photo</th>
@@ -60,13 +60,12 @@
                             <td><?php echo $children['cPurokName']; ?></td>
                             <td>
                                 <input type="hidden" name="m_id" id="m_id" value="<?php echo $children['cMotherID'] ?>">
-                                <form action="../childrens/" method="get">
-                                    <?php
-                                    $child_id = Secure::encrypt($children['cID']);
-                                    ?>
-                                    <input type="hidden" name="view" required value="<?php echo $child_id; ?>">
+                                <?php
+                                $child_id = Secure::encrypt($children['cID']);
+                                ?>
+                                <a href="../childrens/?view=<?php echo $child_id; ?>&monitoring=all">
                                     <button class="btn btn-primary" id="btn_view_children"><i class="fa fa-eye"></i> View</button>
-                                </form>
+                                </a>
                                 <button class="btn btn-primary" id="btn_edit_children" data-id="<?php echo $children['cID']; ?>" data-toggle="modal" data-target="#modal_edit_children"><i class="fa fa-edit"></i> Edit</button>
                             </td>
                         </tr>

@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalAddImmune"><strong>Add Immunization Type</strong></h5>
             </div>
-            <form action="javascript:void();" method="post">
+            <form action="javascript:void(0);" method="post">
                 <div class="modal-body">
                     <div class="row g-3">
                         <div class="col-md-12">

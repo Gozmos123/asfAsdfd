@@ -12,6 +12,8 @@ function civil_status_change() {
 $(document).ready(function () {
     civil_status_change();
 
+    $('#table_childrens').DataTable();
+
     $('button#btn_close_modal').click(function (e) {
         e.preventDefault();
         Swal.fire({
@@ -31,7 +33,7 @@ $(document).ready(function () {
         });
     });
 
-    $('button#btn_edit_children').click(function (e) {
+    $(document).on('click', '#btn_edit_children', function () {
         var id = $(this).data('id');
         var m_id = $('#m_id').val();
         $.ajax({

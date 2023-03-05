@@ -62,7 +62,7 @@ if (isset($_SESSION['auth'])) {
 
         $result = $user->authenticateLogin($username, $password);
 
-        if (array_key_exists('request_error', (array) $result)) {
+        if (array_key_exists('request_failed', (array) $result)) {
             echo json_encode('request_failed');
             exit();
         }
@@ -85,7 +85,7 @@ if (isset($_SESSION['auth'])) {
 
         $result = $user->updateUserPassword($username, $password);
 
-        if (array_key_exists('request_error', (array) $result)) {
+        if (array_key_exists('request_failed', (array) $result)) {
             echo json_encode('request_failed');
             exit();
         }

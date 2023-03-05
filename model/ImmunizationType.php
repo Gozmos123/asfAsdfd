@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
 }
 require_once __DIR__ . '/Database.php';
 
-class Purok extends Database
+class ImmunizationType extends Database
 {
     function __construct()
     {
@@ -17,11 +17,11 @@ class Purok extends Database
         $this->con->close();
     }
 
-    function getPurokAll()
+    function getImmunizationsTypeAll()
     {
         $result = array();
 
-        $query = "select * from puroks";
+        $query = "select * from immunizations_type";
         $stmt = $this->con->stmt_init();
 
         if ($stmt->prepare($query)) {
@@ -39,11 +39,11 @@ class Purok extends Database
         return $result;
     }
 
-    function getPurok_ByID($id)
+    function getImmunizationsType_ByID($id)
     {
         $result = array();
 
-        $query = "select * from puroks where id=?";
+        $query = "select * from immunizations_type where id=?";
         $stmt = $this->con->stmt_init();
 
         if ($stmt->prepare($query)) {
@@ -62,11 +62,11 @@ class Purok extends Database
         return $result;
     }
 
-    function purok_Exist($value)
+    function immunizationType_Exist($value)
     {
         $result = array();
 
-        $query = "select * from puroks where purok_name=?";
+        $query = "select * from immunizations_type where immunization_type=?";
         $stmt = $this->con->stmt_init();
 
         if ($stmt->prepare($query)) {
@@ -85,13 +85,13 @@ class Purok extends Database
         return $result;
     }
 
-    function store($purok)
+    function store($value)
     {
-        $query = "insert into puroks (purok_name, last_user)values(?,?)";
+        $query = "insert into immunizations_type (immunization_type, last_user)values(?, ?)";
         $stmt = $this->con->stmt_init();
 
         if ($stmt->prepare($query)) {
-            $stmt->bind_param('ss', $purok, $_SESSION['auth'][0]['username']);
+            $stmt->bind_param('ss', $value, $_SESSION['auth'][0]['username']);
             $stmt->execute();
             if ($stmt->affected_rows == 1) {
                 $stmt->close();
@@ -99,8 +99,8 @@ class Purok extends Database
                 $activity_log = new ActivityLog;
                 $log = array(
                     'username' => $_SESSION['auth'][0]['username'],
-                    'action' => 'Add New Purok',
-                    'content' => 'Purok: ' . $purok,
+                    'action' => 'Add New Immunization Type',
+                    'content' => 'Immunization Type: ' . $value,
                     'changes' => ''
                 );
                 $activity_log->storeLog($log);
@@ -119,13 +119,13 @@ class Purok extends Database
 
     function update(array $values)
     {
-        $query = "update puroks set purok_name=?, updated_at=now(), last_user=? where id=?";
+        $query = "update immunizations_type set immunization_type=?, updated_at=now(), last_user=? where id=?";
         $stmt = $this->con->stmt_init();
 
-        $current_data = $this->getPurok_ByID($values['id']);
+        $current_data = $this->getImmunizationsType_ByID($values['id']);
 
         if ($stmt->prepare($query)) {
-            $stmt->bind_param('ssi', $values['purok_name'], $_SESSION['auth'][0]['username'], $values['id']);
+            $stmt->bind_param('ssi', $values['immunization_type'], $_SESSION['auth'][0]['username'], $values['id']);
             $stmt->execute();
             if ($stmt->affected_rows == 1) {
                 $stmt->close();
@@ -133,9 +133,9 @@ class Purok extends Database
                 $activity_log = new ActivityLog;
                 $log = array(
                     'username' => $_SESSION['auth'][0]['username'],
-                    'action' => 'Updated Purok',
-                    'content' => 'Purok: ' . $current_data[0]['purok_name'],
-                    'changes' => 'Purok: ' . $values['purok_name']
+                    'action' => 'Updated Immunizations Type',
+                    'content' => 'Immunization Type: ' . $current_data[0]['immunization_type'],
+                    'changes' => 'Immunization Type: ' . $values['immunization_type']
                 );
                 $activity_log->storeLog($log);
                 return true;
