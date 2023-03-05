@@ -27,6 +27,9 @@ $page = "Childrens";
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
     <!-- dataTable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
+    <script>
+        const current_date = new Date().toLocaleDateString('fr-ca');
+    </script>
 </head>
 
 <body id="page-top">

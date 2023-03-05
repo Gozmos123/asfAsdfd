@@ -19,9 +19,9 @@ $all_purok = $puroks->getPurokAll();
             <div class="modal-header">
                 <h5 class="modal-title" id="modalEditChildren"><strong>Edit Children</strong></h5>
             </div>
-            <form class="needs-validation" novalidate action="index.php" method="post">
+            <form class="needs-validation" novalidate action="" method="post">
                 <input type="hidden" name="isRequestSpecific" id="" value="<?php echo $requested_specific; ?>">
-                <input type="hidden" id="children_id" name="id" required>
+                <input type="hidden" id="profile_children_id" name="id" required>
                 <input type="hidden" id="mother_id" name="mother_id" required>
                 <div class="modal-body">
                     <h5 id="mother_name" class="mb-4"></h5>

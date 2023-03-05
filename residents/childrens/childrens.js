@@ -1,4 +1,3 @@
-const current_date = new Date().toLocaleDateString('fr-ca');
 children_birthdate.max = current_date;
 
 function civil_status_change() {
@@ -13,6 +12,11 @@ $(document).ready(function () {
     civil_status_change();
 
     $('#table_childrens').DataTable();
+
+    $('#table_vitamins').DataTable();
+    $('#table_deworming').DataTable();
+    $('#table_weights').DataTable();
+    $('#table_immunizations').DataTable();
 
     $('button#btn_close_modal').click(function (e) {
         e.preventDefault();
@@ -54,7 +58,7 @@ $(document).ready(function () {
                 } else {
                     $('#mother_id').val(response[0]['id']);
                     $('#mother_name').text('Mother: ' + response[0]['first_name'] + ' ' + response[0]['middle_name'] + ' ' + response[0]['last_name']);
-                    $('#children_id').val(id);
+                    $('#profile_children_id').val(id);
 
                     $.ajax({
                         type: "post",
