@@ -24,11 +24,7 @@ if (isset($_SESSION['auth'])) {
 
         $mother->sex = mysqli_real_escape_string($mother->con, $_POST['sex']);
         $mother->civil_status = mysqli_real_escape_string($mother->con, $_POST['civil_status']);
-        if ($mother->civil_status == "Other") {
-            $mother->other_status = mysqli_real_escape_string($mother->con, $_POST['other_status']);
-        } else {
-            $mother->other_status = "";
-        }
+        $mother->highest_educ_attainment = mysqli_real_escape_string($mother->con, $_POST['highest_educ_attainment']);
         $mother->birthplace = mysqli_real_escape_string($mother->con, $_POST['birthplace']);
         $mother->religion = mysqli_real_escape_string($mother->con, $_POST['religion']);
         $mother->email = mysqli_real_escape_string($mother->con, $_POST['email']);
@@ -95,11 +91,7 @@ if (isset($_SESSION['auth'])) {
 
         $mother->sex = mysqli_real_escape_string($mother->con, $_POST['sex']);
         $mother->civil_status = mysqli_real_escape_string($mother->con, $_POST['civil_status']);
-        if ($mother->civil_status == "Other") {
-            $mother->other_status = mysqli_real_escape_string($mother->con, $_POST['other_status']);
-        } else {
-            $mother->other_status = "";
-        }
+        $mother->highest_educ_attainment = mysqli_real_escape_string($mother->con, $_POST['highest_educ_attainment']);
         $mother->birthplace = mysqli_real_escape_string($mother->con, $_POST['birthplace']);
         $mother->religion = mysqli_real_escape_string($mother->con, $_POST['religion']);
         $mother->email = mysqli_real_escape_string($mother->con, $_POST['email']);
@@ -151,16 +143,12 @@ if (isset($_SESSION['auth'])) {
 
         $children->sex = mysqli_real_escape_string($children->con, $_POST['sex']);
         $children->civil_status = mysqli_real_escape_string($children->con, $_POST['civil_status']);
-        if ($children->civil_status == "Other") {
-            $children->other_status = mysqli_real_escape_string($children->con, $_POST['other_status']);
-        } else {
-            $children->other_status = "";
-        }
+        $children->highest_educ_attainment = mysqli_real_escape_string($children->con, $_POST['highest_educ_attainment']);
         $children->birthplace = mysqli_real_escape_string($children->con, $_POST['birthplace']);
         $children->religion = mysqli_real_escape_string($children->con, $_POST['religion']);
         $children->email = mysqli_real_escape_string($children->con, $_POST['email']);
         $children->contact_no = mysqli_real_escape_string($children->con, $_POST['contact_no']);
-        $children->purok_name = mysqli_real_escape_string($children->con, $_POST['purok_name']);
+        $children->disability = mysqli_real_escape_string($children->con, $_POST['disability']);
         $children->mother_id = mysqli_real_escape_string($children->con, $_POST['mother_id']);
         $children->last_user = mysqli_real_escape_string($children->con, $_SESSION['auth'][0]['username']);
 

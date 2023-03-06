@@ -117,17 +117,10 @@ $page = "mothers";
                                         ?>
                                                 <tr>
                                                     <td><img src="../../<?php echo $mother['photo']; ?>" alt="profile" width="50px" height="50px"></td>
-                                                    <td><?php echo $mother['first_name'] . ' ' . $mother['middle_name'] . ' ' . $mother['last_name']; ?></td>
+                                                    <td><?php echo ucwords($mother['first_name'] . ' ' . $mother['middle_name'] . ' ' . $mother['last_name']); ?></td>
                                                     <td><?php echo $mother['age']; ?></td>
                                                     <td><?php echo $mother['sex']; ?></td>
-                                                    <?php
-                                                    if ($mother['civil_status'] == "Other") {
-                                                        $civil_status = $mother['other_status'];
-                                                    } else {
-                                                        $civil_status = $mother['civil_status'];
-                                                    }
-                                                    ?>
-                                                    <td><?php echo $civil_status; ?></td>
+                                                    <td><?php echo $mother['civil_status']; ?></td>
                                                     <td><?php echo $mother['purok_name']; ?></td>
                                                     <td>
                                                         <?php

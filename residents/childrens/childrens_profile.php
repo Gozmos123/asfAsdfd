@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="text-center">
                             <img src="../../<?php echo $children[0]['photo']; ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                            <h4 class="my-3" id="name"><?php echo $children[0]['first_name'] . ' ' . $children[0]['middle_name'] . ' ' . $children[0]['last_name'] . ' ' . $children[0]['prefix']; ?></h4>
+                            <h4 class="my-3" id="name"><?php echo ucwords($children[0]['first_name'] . ' ' . $children[0]['middle_name'] . ' ' . $children[0]['last_name'] . ' ' . $children[0]['prefix']); ?></h4>
                             <div class="d-flex justify-content-center mb-2 mt-2">
                                 <!-- edit profile -->
                                 <?php
@@ -29,7 +29,7 @@
                                 <p class="mb-0">Mother</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?php echo $mother[0]['first_name'] . ' ' . $mother[0]['middle_name'] . ' ' . $mother[0]['last_name']; ?></p>
+                                <p class="text-muted mb-0"><?php echo ucwords($mother[0]['first_name'] . ' ' . $mother[0]['middle_name'] . ' ' . $mother[0]['last_name']); ?></p>
                             </div>
                         </div>
                         <hr>
@@ -74,17 +74,7 @@
                                 <p class="mb-0">Civil Status</p>
                             </div>
                             <div class="col-sm-9">
-                                <?php
-                                if (strtolower($children[0]['civil_status']) == 'other') {
-                                ?>
-                                    <p class="text-muted mb-0"><?php echo $children[0]['other_status']; ?></p>
-                                <?php
-                                } else {
-                                ?>
-                                    <p class="text-muted mb-0"><?php echo $children[0]['civil_status']; ?></p>
-                                <?php
-                                }
-                                ?>
+                                <p class="text-muted mb-0"><?php echo $children[0]['civil_status']; ?></p>
                             </div>
                         </div>
                         <hr>
@@ -99,10 +89,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Purok</p>
+                                <p class="mb-0">Disability</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?php echo $children[0]['purok_name']; ?></p>
+                                <p class="text-muted mb-0"><?php echo $children[0]['disability']; ?></p>
                             </div>
                         </div>
                         <hr>

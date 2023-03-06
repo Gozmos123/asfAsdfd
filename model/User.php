@@ -19,7 +19,6 @@ class User extends Database
     public $age;
     public $sex;
     public $civil_status;
-    public $other_status;
     public $birthplace;
     public $religion;
     public $email;
@@ -40,7 +39,7 @@ class User extends Database
     {
         $result = array();
 
-        $query = "select username, user_type, photo, first_name, middle_name, last_name, prefix, birthdate, age, sex, civil_status, other_status, birthplace, religion, email, contact_no, purok_name from users where username=? and password=sha2(?, 512)";
+        $query = "select username, user_type, photo, first_name, middle_name, last_name, prefix, birthdate, age, sex, civil_status, birthplace, religion, email, contact_no, purok_name from users where username=? and password=sha2(?, 512)";
         $stmt = $this->con->stmt_init();
 
         if ($stmt->prepare($query)) {
@@ -110,13 +109,13 @@ class User extends Database
 
     function updateUserProfile()
     {
-        $query = "update users set first_name=?, middle_name=?, last_name=?, prefix=?, birthdate=?, age=?, sex=?, civil_status=?, other_status=?, birthplace=?, religion=?, email=?, contact_no=?, purok_name=?, updated_at=now() where username=?";
+        $query = "update users set first_name=?, middle_name=?, last_name=?, prefix=?, birthdate=?, age=?, sex=?, civil_status=?, birthplace=?, religion=?, email=?, contact_no=?, purok_name=?, updated_at=now() where username=?";
         $stmt = $this->con->stmt_init();
 
         $user = $this->getUser_ByUsername($this->username);
 
         if ($stmt->prepare($query)) {
-            $stmt->bind_param('sssssisssssssss', $this->first_name, $this->middle_name, $this->last_name, $this->prefix, $this->birthdate, $this->age, $this->sex, $this->civil_status, $this->other_status, $this->birthplace, $this->religion, $this->email, $this->contact_no, $this->purok_name, $this->username);
+            $stmt->bind_param('sssssissssssss', $this->first_name, $this->middle_name, $this->last_name, $this->prefix, $this->birthdate, $this->age, $this->sex, $this->civil_status, $this->birthplace, $this->religion, $this->email, $this->contact_no, $this->purok_name, $this->username);
             $stmt->execute();
             if ($stmt->affected_rows == 1) {
                 $stmt->close();
@@ -125,8 +124,8 @@ class User extends Database
                 $log = array(
                     'username' => $_SESSION['auth'][0]['username'],
                     'action' => 'Profile Update',
-                    'content' => 'Name: ' . $user[0]['first_name'] . ' ' . $user[0]['middle_name'] . ' ' . $user[0]['last_name'] . ' ' . $user[0]['prefix'] . ', Birthdate: ' . $user[0]['birthdate'] . ', Birthplace: ' . $user[0]['birthplace'] . ', Sex: ' . $user[0]['sex'] . ', Civil Status: ' . $user[0]['civil_status'] . ', Other Status: ' . $user[0]['other_status'] . ', Religion: ' . $user[0]['religion'] . ', Purok: ' . $user[0]['purok_name'] . ', Email: ' . $user[0]['email'] . ', Contact Number: ' . $user[0]['contact_no'],
-                    'changes' => 'Name: ' . $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name . ' ' . $this->prefix . ', Birthdate: ' . $this->birthdate . ', Birthplace: ' . $this->birthplace . ', Sex: ' . $this->sex . ', Civil Status: ' . $this->civil_status . ', Other Status: ' . $this->other_status . ', Religion: ' . $this->religion . ', Purok: ' . $this->purok_name . ', Email: ' . $this->email . ', Contact Number: ' . $this->contact_no,
+                    'content' => 'Name: ' . $user[0]['first_name'] . ' ' . $user[0]['middle_name'] . ' ' . $user[0]['last_name'] . ' ' . $user[0]['prefix'] . ', Birthdate: ' . $user[0]['birthdate'] . ', Birthplace: ' . $user[0]['birthplace'] . ', Sex: ' . $user[0]['sex'] . ', Civil Status: ' . $user[0]['civil_status'] . ', Religion: ' . $user[0]['religion'] . ', Purok: ' . $user[0]['purok_name'] . ', Email: ' . $user[0]['email'] . ', Contact Number: ' . $user[0]['contact_no'],
+                    'changes' => 'Name: ' . $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name . ' ' . $this->prefix . ', Birthdate: ' . $this->birthdate . ', Birthplace: ' . $this->birthplace . ', Sex: ' . $this->sex . ', Civil Status: ' . $this->civil_status . ', Religion: ' . $this->religion . ', Purok: ' . $this->purok_name . ', Email: ' . $this->email . ', Contact Number: ' . $this->contact_no,
                 );
                 $activity_log->storeLog($log);
                 return true;

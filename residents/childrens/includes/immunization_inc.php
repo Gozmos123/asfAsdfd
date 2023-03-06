@@ -75,19 +75,19 @@ $immuneTypes = $immuneTypeObj->getImmunizationsTypeAll();
                     <h5 id="children_name" class="mb-3"></h5>
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="txt_vaccineName" class="form-label">Vaccine Name</label>
+                            <label for="txt_vaccineName" class="form-label">Vaccine Name *</label>
                             <input type="text" name="vaccine_name" id="txt_vaccineName" required class="form-control">
                         </div>
                         <div class="col-md-6">
-                            <label for="txt_dose" class="form-label">Dose</label>
+                            <label for="txt_dose" class="form-label">Dosage *</label>
                             <input type="text" name="dose" id="txt_dose" required class="form-control">
                         </div>
                         <div class="col-md-12">
-                            <label for="txt_date_given" class="form-label">Date Given</label>
+                            <label for="txt_date_given" class="form-label">Date Given *</label>
                             <input type="date" class="form-control" id="txt_date_given" required value="" name="date_given">
                         </div>
                         <div class="col-md-12">
-                            <label for="txt_immunization_type" class="form-label">Immunization Type</label>
+                            <label for="txt_immunization_type" class="form-label">Immunization Type *</label>
                             <select id="txt_immunization_type" class="form-select" required name="immunization_type">
                                 <?php
                                 foreach ($immuneTypes as $type) {
@@ -99,7 +99,7 @@ $immuneTypes = $immuneTypeObj->getImmunizationsTypeAll();
                             </select>
                         </div>
                         <div class="col-md-12">
-                            <label for="txt_administered_by" class="form-label">Administered By</label>
+                            <label for="txt_administered_by" class="form-label">Administered By *</label>
                             <input type="text" name="administered_by" id="txt_administered_by" required class="form-control">
                         </div>
                     </div>

@@ -24,7 +24,7 @@ $all_purok = $puroks->getPurokAll();
                 <div class="modal-body">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="first_name" class="form-label">First Name</label>
+                            <label for="first_name" class="form-label">First Name *</label>
                             <input type="text" class="form-control" id="children_first_name" required value="" name="first_name">
                             <div class="invalid-feedback">
                                 Please enter first name.
@@ -35,7 +35,7 @@ $all_purok = $puroks->getPurokAll();
                             <input type="text" class="form-control" id="children_middle_name" value="" name="middle_name">
                         </div>
                         <div class="col-md-6">
-                            <label for="last_name" class="form-label">Last Name</label>
+                            <label for="last_name" class="form-label">Last Name *</label>
                             <input type="text" class="form-control" id="children_last_name" required value="" name="last_name">
                             <div class="invalid-feedback">
                                 Please enter last name.
@@ -46,28 +46,28 @@ $all_purok = $puroks->getPurokAll();
                             <input type="text" class="form-control" id="children_prefix" value="" placeholder="e.g. Jr." name="prefix" maxlength="5">
                         </div>
                         <div class="col-md-6">
-                            <label for="sex" class="form-label">Sex</label>
+                            <label for="sex" class="form-label">Sex *</label>
                             <select id="children_sex" class="form-select" required name="sex">
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label for="birthdate" class="form-label">Date of Birth</label>
+                            <label for="birthdate" class="form-label">Date of Birth *</label>
                             <input type="date" class="form-control" id="children_birthdate" required value="" name="birthdate">
                             <div class="invalid-feedback">
                                 Please select a valid date.
                             </div>
                         </div>
                         <div class="col-12">
-                            <label for="birthplace" class="form-label">Place of Birth</label>
+                            <label for="birthplace" class="form-label">Place of Birth *</label>
                             <input type="text" class="form-control" id="children_birthplace" required value="" name="birthplace">
                             <div class="invalid-feedback">
                                 Please enter place of birth.
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="civil_status" class="form-label">Civil Status</label>
+                        <div class="col-md-12">
+                            <label for="civil_status" class="form-label">Civil Status *</label>
                             <select id="children_civil_status" class="form-select" required onchange="civil_status_change()" name="civil_status">
                                 <?php
                                 foreach ($all_civil_status as $status) {
@@ -78,15 +78,19 @@ $all_purok = $puroks->getPurokAll();
                                 ?>
                             </select>
                         </div>
-                        <div class="col-md-6" id="otherStatus">
-                            <label for="other_status" class="form-label">Other Status</label>
-                            <input type="text" class="form-control" id="children_other_status" value="" name="other_status">
-                            <div class="invalid-feedback">
-                                Please enter civil status.
-                            </div>
+                        <div class="col-md-12">
+                            <label for="children_highest_educ_attainment" class="form-label">Highest Educational Attainment *</label>
+                            <select id="children_highest_educ_attainment" class="form-select" required name="highest_educ_attainment">
+                                <option value="No Grade">No Grade</option>
+                                <option value="Grade School">Grade School</option>
+                                <option value="High School">High School</option>
+                                <option value="Post Secondary">Post Secondary</option>
+                                <option value="College">College</option>
+                                <option value="Master/Doctoral">Master/Doctoral</option>
+                            </select>
                         </div>
-                        <div class="col-md-6">
-                            <label for="religion" class="form-label">Religion</label>
+                        <div class="col-md-12">
+                            <label for="religion" class="form-label">Religion *</label>
                             <select id="children_religion" class="form-select" required name="religion">
                                 <?php
                                 foreach ($all_religion as $religion) {
@@ -97,19 +101,28 @@ $all_purok = $puroks->getPurokAll();
                                 ?>
                             </select>
                         </div>
-                        <div class="col-md-6">
-                            <label for="purok_name" class="form-label">Purok</label>
-                            <select id="children_purok_name" class="form-select" required name="purok_name">
-                                <?php
-                                foreach ($all_purok as $purok) {
-                                ?>
-                                    <option value="<?php echo $purok['purok_name'] ?>"><?php echo $purok['purok_name'] ?></option>
-                                <?php
-                                }
-                                ?>
+                        <div class="col-md-12">
+                            <label for="children_disability" class="form-label">Disability *</label>
+                            <select id="children_disability" class="form-select" required name="disability">
+                                <option value="None">None</option>
+                                <option value="Total Blindness">Total Blindness</option>
+                                <option value="Partial Blindness">Partial Blindness</option>
+                                <option value="Low Vision">Low Vision</option>
+                                <option value="Totally Deaf">Totally Deaf</option>
+                                <option value="Partially Deaf">Partially Deaf</option>
+                                <option value="Oral Defect">Oral Defect</option>
+                                <option value="One Hand">One Hand</option>
+                                <option value="No Hands">No Hands</option>
+                                <option value="One Leg">One Leg</option>
+                                <option value="No Legs, Mild Cerebral Palsy">No Legs, Mild Cerebral Palsy</option>
+                                <option value="Severe Cerebral Palsy">Severe Cerebral Palsy</option>
+                                <option value="Retarded">Retarded</option>
+                                <option value="Mentally Ill">Mentally Ill</option>
+                                <option value="Mental Retardation">Mental Retardation</option>
+                                <option value="Multiple Impairment">Multiple Impairment</option>
                             </select>
                         </div>
-                        <div class="col-md-6" id="otherStatus">
+                        <div class="col-md-6">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="children_email" value="" name="email">
                             <div class="invalid-feedback">

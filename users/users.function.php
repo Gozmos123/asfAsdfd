@@ -22,11 +22,6 @@ if (isset($_SESSION['auth'])) {
 
         $user->sex = mysqli_real_escape_string($user->con, $_POST['sex']);
         $user->civil_status = mysqli_real_escape_string($user->con, $_POST['civil_status']);
-        if ($user->civil_status == "Other") {
-            $user->other_status = mysqli_real_escape_string($user->con, $_POST['other_status']);
-        } else {
-            $user->other_status = "";
-        }
         $user->birthplace = mysqli_real_escape_string($user->con, $_POST['birthplace']);
         $user->religion = mysqli_real_escape_string($user->con, $_POST['religion']);
         $user->email = mysqli_real_escape_string($user->con, $_POST['email']);

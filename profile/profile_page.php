@@ -88,7 +88,7 @@ $page = "My Profile";
                                                         <p class="mb-0">Full Name</p>
                                                     </div>
                                                     <div class="col-sm-9">
-                                                        <p class="text-muted mb-0"><?php echo $user[0]['first_name'] . ' ' . $user[0]['middle_name'] . ' ' . $user[0]['last_name'] . ' ' . $user[0]['prefix']; ?></p>
+                                                        <p class="text-muted mb-0"><?php echo ucwords($user[0]['first_name'] . ' ' . $user[0]['middle_name'] . ' ' . $user[0]['last_name'] . ' ' . $user[0]['prefix']); ?></p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -133,17 +133,7 @@ $page = "My Profile";
                                                         <p class="mb-0">Civil Status</p>
                                                     </div>
                                                     <div class="col-sm-9">
-                                                        <?php
-                                                        if (strtolower($user[0]['civil_status']) == 'other') {
-                                                        ?>
-                                                            <p class="text-muted mb-0"><?php echo $user[0]['other_status']; ?></p>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <p class="text-muted mb-0"><?php echo $user[0]['civil_status']; ?></p>
-                                                        <?php
-                                                        }
-                                                        ?>
+                                                        <p class="text-muted mb-0"><?php echo $user[0]['civil_status']; ?></p>
                                                     </div>
                                                 </div>
                                                 <hr>

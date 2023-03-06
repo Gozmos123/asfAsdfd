@@ -1,16 +1,7 @@
 const current_date = new Date().toLocaleDateString('fr-ca');
 birthdate.max = current_date;
 
-function civil_status_change() {
-    if (document.getElementById('civil_status').value === "Other") {
-        other_status.required = true;
-    } else {
-        other_status.required = false;
-    }
-}
-
 $(document).ready(function () {
-    civil_status_change();
 
     $('button#btn_close_edit_profile').click(function (e) {
         e.preventDefault();
@@ -59,7 +50,6 @@ $(document).ready(function () {
                     $('#birthdate').val(response[0]['birthdate']);
                     $('#birthplace').val(response[0]['birthplace']);
                     $('#civil_status').val(response[0]['civil_status']);
-                    $('#other_status').val(response[0]['other_status']);
                     $('#religion').val(response[0]['religion']);
                     $('#purok_name').val(response[0]['purok_name']);
                     $('#email').val(response[0]['email']);

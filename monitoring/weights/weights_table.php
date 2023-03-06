@@ -46,7 +46,7 @@
                 ?>
                         <tr>
                             <td><img src="../../<?php echo $weight['photo']; ?>" alt="profile" width="50px" height="50px"></td>
-                            <td><?php echo $weight['first_name'] . ' ' . $weight['middle_name'] . ' ' . $weight['last_name'] . ' ' . $weight['prefix']; ?></td>
+                            <td><?php echo ucwords($weight['first_name'] . ' ' . $weight['middle_name'] . ' ' . $weight['last_name'] . ' ' . $weight['prefix']); ?></td>
                             <td><?php echo $weight['age']; ?></td>
                             <td><?php echo $weight['weight']; ?></td>
                             <td><?php echo $weight['height']; ?></td>

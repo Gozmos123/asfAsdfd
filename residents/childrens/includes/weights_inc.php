@@ -64,19 +64,19 @@
                     <h5 id="children_name" class="mb-3"></h5>
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="txt_weight" class="form-label">Weight (kg)</label>
+                            <label for="txt_weight" class="form-label">Weight (kg) *</label>
                             <input type="number" name="weight" id="txt_weight" required class="form-control" step=".01">
                         </div>
                         <div class="col-md-6">
-                            <label for="txt_height" class="form-label">Height (cm)</label>
+                            <label for="txt_height" class="form-label">Height (cm) *</label>
                             <input type="number" name="height" id="txt_height" required class="form-control" step=".01">
                         </div>
                         <div class="col-md-12">
-                            <label for="txt_checked_by" class="form-label">Checked By</label>
+                            <label for="txt_checked_by" class="form-label">Checked By *</label>
                             <input type="text" name="checked_by" id="txt_checked_by" required class="form-control">
                         </div>
                         <div class="col-md-12">
-                            <label for="txt_date_checked" class="form-label">Date Checked</label>
+                            <label for="txt_date_checked" class="form-label">Date Checked *</label>
                             <input type="date" class="form-control" id="txt_date_checked" required value="" name="date_checked">
                         </div>
                     </div>

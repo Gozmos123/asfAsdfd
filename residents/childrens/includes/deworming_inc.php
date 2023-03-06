@@ -61,15 +61,15 @@
                     <h5 id="children_name" class="mb-3"></h5>
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <label for="txt_place_given" class="form-label">Place Given</label>
+                            <label for="txt_place_given" class="form-label">Place Given *</label>
                             <input type="text" name="place_given" id="txt_place_given" required class="form-control">
                         </div>
                         <div class="col-md-12">
-                            <label for="txt_date_given" class="form-label">Date Checked</label>
+                            <label for="txt_date_given" class="form-label">Date Checked *</label>
                             <input type="date" class="form-control" id="txt_date_given" required value="" name="date_given">
                         </div>
                         <div class="col-md-12">
-                            <label for="txt_given_by" class="form-label">Checked By</label>
+                            <label for="txt_given_by" class="form-label">Checked By *</label>
                             <input type="text" name="given_by" id="txt_given_by" required class="form-control">
                         </div>
                     </div>

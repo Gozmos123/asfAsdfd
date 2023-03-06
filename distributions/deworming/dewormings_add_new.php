@@ -7,15 +7,15 @@
             <form action="javascript:void(0);" method="post" class="row" id="formAddDeworming">
                 <div class="row g-3">
                     <div class="col-md-3">
-                        <label for="place_given" class="form-label">Place Given</label>
+                        <label for="place_given" class="form-label">Place Given *</label>
                         <input type="text" class="form-control" id="place_given" required value="" name="place_given">
                     </div>
                     <div class="col-md-3">
-                        <label for="date_given" class="form-label">Date Given (MM/DD/YYYY)</label>
+                        <label for="date_given" class="form-label">Date Given (MM/DD/YYYY) *</label>
                         <input type="date" class="form-control" id="date_given" required value="" name="date_given">
                     </div>
                     <div class="col-md-4">
-                        <label for="given_by" class="form-label">Given By</label>
+                        <label for="given_by" class="form-label">Given By *</label>
                         <input type="text" class="form-control" id="given_by" required value="" name="given_by">
                     </div>
                 </div>
@@ -47,10 +47,10 @@
                                                 <input class="form-check-input" type="checkbox" role="switch" id="is_selected" name="is_selected[]" value="<?php echo $deworming['id']; ?>">
                                             </div>
                                         </td>
-                                        <td><?php echo $deworming['name']; ?></td>
+                                        <td><?php echo ucwords($deworming['name']); ?></td>
                                         <td><?php echo $deworming['age']; ?></td>
                                         <td><?php echo $deworming['sex']; ?></td>
-                                        <td><?php echo $deworming['mother']; ?></td>
+                                        <td><?php echo ucwords($deworming['mother']); ?></td>
                                     </tr>
                             <?php
                                 }

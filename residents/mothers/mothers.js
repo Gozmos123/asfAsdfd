@@ -3,20 +3,7 @@ birthdate.max = current_date;
 edit_birthdate.max = current_date;
 children_birthdate.max = current_date;
 
-function civil_status_change() {
-    if (document.getElementById('civil_status').value === "Other" || document.getElementById('edit_civil_status').value === "Other" || document.getElementById('children_civil_status').value === "Other") {
-        other_status.required = true;
-        edit_other_status.required = true;
-        children_other_status.required = true;
-    } else {
-        other_status.required = false;
-        edit_other_status.required = false;
-        children_other_status.required = false;
-    }
-}
-
 $(document).ready(function () {
-    civil_status_change();
 
     $('#table_mothers').DataTable();
 
@@ -67,7 +54,7 @@ $(document).ready(function () {
                     $('#edit_birthdate').val(response[0]['birthdate']);
                     $('#edit_birthplace').val(response[0]['birthplace']);
                     $('#edit_civil_status').val(response[0]['civil_status']);
-                    $('#edit_other_status').val(response[0]['other_status']);
+                    $('#edit_highest_educ_attainment').val(response[0]['highest_educ_attainment']);
                     $('#edit_religion').val(response[0]['religion']);
                     $('#edit_purok_name').val(response[0]['purok_name']);
                     $('#edit_email').val(response[0]['email']);
@@ -99,7 +86,6 @@ $(document).ready(function () {
                     $('#mother_id').val(response[0]['id']);
                     $('#children_last_name').val(response[0]['last_name']);
                     $('#children_religion').val(response[0]['religion']);
-                    $('#children_purok_name').val(response[0]['purok_name']);
                 }
             }
         });

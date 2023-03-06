@@ -16,7 +16,7 @@
                 <?php
                 }
                 ?>
-                <h4 class="card-title mt-2">Childrens received vitamins</h4>
+                <h4 class="card-title mt-2">Childrens received vitamin A</h4>
             </div>
         </div>
         <table class="table table-responsive-sm mt-2" id="table_vitamins">
@@ -45,10 +45,10 @@
                 ?>
                         <tr>
                             <td><img src="../../<?php echo $vitaminList['photo']; ?>" alt="profile" width="50px" height="50px"></td>
-                            <td><?php echo $vitaminList['first_name'] . ' ' . $vitaminList['middle_name'] . ' ' . $vitaminList['last_name'] . ' ' . $vitaminList['prefix']; ?></td>
+                            <td><?php echo ucwords($vitaminList['first_name'] . ' ' . $vitaminList['middle_name'] . ' ' . $vitaminList['last_name'] . ' ' . $vitaminList['prefix']); ?></td>
                             <td><?php echo $vitaminList['age']; ?></td>
                             <td><?php echo $vitaminList['sex']; ?></td>
-                            <td><?php echo $vitaminList['mFirstName'] . ' ' . $vitaminList['mMiddleName'] . ' ' . $vitaminList['mLastName']; ?></td>
+                            <td><?php echo ucwords($vitaminList['mFirstName'] . ' ' . $vitaminList['mMiddleName'] . ' ' . $vitaminList['mLastName']); ?></td>
                             <td><?php echo $vitaminList['date_given']; ?></td>
                             <td>
                                 <?php

@@ -42,7 +42,6 @@
                     <th scope="col">Age</th>
                     <th scope="col">Sex</th>
                     <th scope="col">Mother</th>
-                    <th scope="col">Purok</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -53,11 +52,10 @@
                 ?>
                         <tr>
                             <td><img src="../../<?php echo $children['cPhoto']; ?>" alt="profile" width="50px" height="50px"></td>
-                            <td><?php echo $children['cFirstName'] . ' ' . $children['cMiddleName'] . ' ' . $children['cLastName'] . ' ' . $children['cPrefix']; ?></td>
+                            <td><?php echo ucwords($children['cFirstName'] . ' ' . $children['cMiddleName'] . ' ' . $children['cLastName'] . ' ' . $children['cPrefix']); ?></td>
                             <td><?php echo $children['cAge']; ?></td>
                             <td><?php echo $children['cSex']; ?></td>
-                            <td><?php echo $children['mFirstName'] . ' ' . $children['mMiddleName'] . ' ' . $children['mLastName']; ?></td>
-                            <td><?php echo $children['cPurokName']; ?></td>
+                            <td><?php echo ucwords($children['mFirstName'] . ' ' . $children['mMiddleName'] . ' ' . $children['mLastName']); ?></td>
                             <td>
                                 <input type="hidden" name="m_id" id="m_id" value="<?php echo $children['cMotherID'] ?>">
                                 <?php

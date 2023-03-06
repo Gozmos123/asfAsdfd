@@ -68,9 +68,9 @@ $all_purok = $puroks->getPurokAll();
                                 Please enter your place of birth.
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label for="civil_status" class="form-label">Civil Status</label>
-                            <select id="civil_status" class="form-select" required onchange="civil_status_change()" name="civil_status">
+                            <select id="civil_status" class="form-select" required name="civil_status">
                                 <?php
                                 foreach ($all_civil_status as $status) {
                                 ?>
@@ -79,13 +79,6 @@ $all_purok = $puroks->getPurokAll();
                                 }
                                 ?>
                             </select>
-                        </div>
-                        <div class="col-md-6" id="otherStatus">
-                            <label for="other_status" class="form-label">Other Status</label>
-                            <input type="text" class="form-control" id="other_status" value="<?php echo $user[0]['other_status']; ?>" name="other_status">
-                            <div class="invalid-feedback">
-                                Please enter your civil status.
-                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="religion" class="form-label">Religion</label>

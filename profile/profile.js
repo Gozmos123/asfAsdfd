@@ -1,16 +1,7 @@
 const current_date = new Date().toLocaleDateString('fr-ca');
 birthdate.max = current_date;
 
-function civil_status_change() {
-    if (document.getElementById('civil_status').value === "Other") {
-        other_status.required = true;
-    } else {
-        other_status.required = false;
-    }
-}
-
 $(document).ready(function () {
-    civil_status_change();
 
     $('#btn_close_edit_profile').click(function (e) {
         e.preventDefault();

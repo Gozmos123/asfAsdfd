@@ -45,10 +45,10 @@
                 ?>
                         <tr>
                             <td><img src="../../<?php echo $deworming['photo']; ?>" alt="profile" width="50px" height="50px"></td>
-                            <td><?php echo $deworming['first_name'] . ' ' . $deworming['middle_name'] . ' ' . $deworming['last_name'] . ' ' . $deworming['prefix']; ?></td>
+                            <td><?php echo ucwords($deworming['first_name'] . ' ' . $deworming['middle_name'] . ' ' . $deworming['last_name'] . ' ' . $deworming['prefix']); ?></td>
                             <td><?php echo $deworming['age']; ?></td>
                             <td><?php echo $deworming['sex']; ?></td>
-                            <td><?php echo $deworming['mFirstName'] . ' ' . $deworming['mMiddleName'] . ' ' . $deworming['mLastName']; ?></td>
+                            <td><?php echo ucwords($deworming['mFirstName'] . ' ' . $deworming['mMiddleName'] . ' ' . $deworming['mLastName']); ?></td>
                             <td><?php echo $deworming['date_given']; ?></td>
                             <td>
                                 <?php

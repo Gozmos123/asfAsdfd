@@ -43,7 +43,7 @@
                 ?>
                         <tr>
                             <td><img src="../../<?php echo $immunization['photo']; ?>" alt="profile" width="50px" height="50px"></td>
-                            <td><?php echo $immunization['first_name'] . ' ' . $immunization['middle_name'] . ' ' . $immunization['last_name'] . ' ' . $immunization['prefix']; ?></td>
+                            <td><?php echo ucwords($immunization['first_name'] . ' ' . $immunization['middle_name'] . ' ' . $immunization['last_name'] . ' ' . $immunization['prefix']); ?></td>
                             <td><?php echo $immunization['age']; ?></td>
                             <td><?php echo $immunization['date_given']; ?></td>
                             <td>

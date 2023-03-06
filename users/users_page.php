@@ -84,7 +84,7 @@ $page = "Users";
                                                 <tr>
                                                     <td><img src="../<?php echo $user['photo']; ?>" alt="profile" width="50px" height="50px"></td>
                                                     <td><?php echo $user['username']; ?></td>
-                                                    <td><?php echo $user['first_name'] . ' ' . $user['middle_name'] . ' ' . $user['last_name'] . ' ' . $user['prefix']; ?></td>
+                                                    <td><?php echo ucwords($user['first_name'] . ' ' . $user['middle_name'] . ' ' . $user['last_name'] . ' ' . $user['prefix']); ?></td>
                                                     <td><?php echo $user['last_login_date']; ?></td>
                                                     <td>
                                                         <button class="btn btn-primary" id="btn_edit_user" data-id="<?php echo $user['username']; ?>" data-toggle="modal" data-target="#modal_edit_profile"><i class="fa fa-edit"></i> Edit</button>

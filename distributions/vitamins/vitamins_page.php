@@ -3,7 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
     header('location: ../vitamins/');
     exit();
 }
-$page = "vitamins";
+$page = "vitamin A";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +87,7 @@ $page = "vitamins";
 
                     <!-- Page Heading -->
                     <div class="d-lg-none d-md-none d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800"><?php echo ucfirst($page); ?></h1>
+                        <h1 class="h3 mb-0 text-gray-800"><?php echo ucwords($page); ?></h1>
                     </div>
 
                     <!-- Content Row -->

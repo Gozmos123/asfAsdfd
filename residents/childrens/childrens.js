@@ -1,15 +1,7 @@
 children_birthdate.max = current_date;
 
-function civil_status_change() {
-    if (document.getElementById('children_civil_status').value === "Other") {
-        children_other_status.required = true;
-    } else {
-        children_other_status.required = false;
-    }
-}
 
 $(document).ready(function () {
-    civil_status_change();
 
     $('#table_childrens').DataTable();
 
@@ -84,9 +76,9 @@ $(document).ready(function () {
                                 $('#children_birthdate').val(response[0]['birthdate']);
                                 $('#children_birthplace').val(response[0]['birthplace']);
                                 $('#children_civil_status').val(response[0]['civil_status']);
-                                $('#children_other_status').val(response[0]['other_status']);
+                                $('#children_highest_educ_attainment').val(response[0]['highest_educ_attainment']);
                                 $('#children_religion').val(response[0]['religion']);
-                                $('#children_purok_name').val(response[0]['purok_name']);
+                                $('#children_disability').val(response[0]['disability']);
                                 $('#children_email').val(response[0]['email']);
                                 $('#children_contact_no').val(response[0]['contact_no']);
                             }

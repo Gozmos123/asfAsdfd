@@ -2,12 +2,12 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="card-title mt-2">Add New Vitamins for Children</h4>
+                <h4 class="card-title mt-2">Add New Vitamin A for Children</h4>
             </div>
             <form action="javascript:void(0);" method="post" class="row" id="formAddVitamin">
                 <div class="row g-3">
                     <div class="col-md-3">
-                        <label for="date_given" class="form-label">Date Given (MM/DD/YYYY)</label>
+                        <label for="date_given" class="form-label">Date Given (MM/DD/YYYY) *</label>
                         <input type="date" class="form-control" id="date_given" required value="" name="date_given">
                         <h3 id="error_date"></h3>
                         <!-- <div class="invalid-feedback">
@@ -15,7 +15,7 @@
                         </div> -->
                     </div>
                     <div class="col-md-4">
-                        <label for="given_by" class="form-label">Given By</label>
+                        <label for="given_by" class="form-label">Given By *</label>
                         <input type="text" class="form-control" id="given_by" required value="" name="given_by">
                         <!-- <div class="invalid-feedback">
                             This field is required
@@ -51,10 +51,10 @@
                                                 <input class="form-check-input" type="checkbox" role="switch" id="is_selected" name="is_selected[]" value="<?php echo $children_list['id']; ?>">
                                             </div>
                                         </td>
-                                        <td><?php echo $children_list['name']; ?></td>
+                                        <td><?php echo ucwords($children_list['name']); ?></td>
                                         <td><?php echo $children_list['age']; ?></td>
                                         <td><?php echo $children_list['sex']; ?></td>
-                                        <td><?php echo $children_list['mother']; ?></td>
+                                        <td><?php echo ucwords($children_list['mother']); ?></td>
                                     </tr>
                             <?php
                                 }
